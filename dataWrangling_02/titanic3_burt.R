@@ -78,9 +78,10 @@ titanic3$boat[which(is.na(titanic3$boat))] <- "NA"
 # You notice that many passengers don’t have a cabin number associated with them.
 # Does it make sense to fill missing cabin numbers with a value?
 # What does a missing value here mean?
-# You have a hunch that the fact that the cabin number is missing might be a useful indicator of survival. Create a new column has_cabin_number which has 1 if there is a cabin number, and 0 otherwise.
+# You have a hunch that the fact that the cabin number is missing might be a useful indicator
+# of survival. Create a new column has_cabin_number which has 1 if there is a cabin number, and 0 otherwise.
 
-
+titanic3 <- mutate(titanic3, has_cabin_number = if_else(is.na(cabin),0, 1))
 
 # 6: Submit the project on Github
 #
