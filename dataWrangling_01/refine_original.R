@@ -14,7 +14,7 @@ library(plyr)
 library(dplyr)
 
 # 0: Load the data in RStudio
-refine_original <- read_csv("~/foundations_data_sci/refine_original.csv")
+refine_original <- read_csv("~/foundations_data_sci/dataWrangling_01/refine_original.csv")
 
 # 1: Clean up brand names
 refine_original<-mutate(refine_original, company=tolower(company))
@@ -40,13 +40,15 @@ refine_original <- mutate(refine_original, full_address = paste(address, city, c
 # 5: Create dummy variables for company and product category
 #Create dummy columns with variables
 refine_original <- mutate(refine_original,company_philips = as.numeric(company == "philips"))
-refine_original <- mutate(refine_original,company_akzo = as.numeric((company == "akzo")))
-refine_original <- mutate(refine_original,company_van = as.numeric((company == "van houten")))
-refine_original <- mutate(refine_original,company_unilever = as.numeric((company == "unilever")))
+refine_original <- mutate(refine_original,company_akzo = as.numeric(company == "akzo"))
+refine_original <- mutate(refine_original,company_van = as.numeric(company == "van houten"))
+refine_original <- mutate(refine_original,company_unilever = as.numeric(company == "unilever"))
 refine_original <- mutate(refine_original,product_smartphone = as.numeric((product_code == "p")))
 refine_original <- mutate(refine_original,product_tv = as.numeric((product_code == "v")))
 refine_original <- mutate(refine_original,product_laptop = as.numeric((product_code == "x")))
 refine_original <- mutate(refine_original,product_tablet = as.numeric((product_code == "q")))
 
-# 6: Submit the project on Github
-# https://github.com/btalcott/foundations_data_sci
+# 6: Submit the project on Github (also write refine_clean.csv)
+# https://github.com/btalcott/foundations_data_sci/dataWrangling_01
+
+write.csv(refine_original, file = "~/foundations_data_sci/dataWrangling_01/refine_clean.csv")
